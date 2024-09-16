@@ -3,7 +3,9 @@ syntax = "proto3";
 package bidirectional;
 
 service Bidirectional{
-	rpc getServerMessage(RequestPayload) returns (ResponsePayload);
+	rpc getServerMessage(stream RequestPayload) returns (stream ResponsePayload); // both streaming , full duplex
+    rpc clientStreamingMessage(stream RequestPayload) returns (ResponsePayload); // client streaming , server is not , half duplex
+    rpc serverStreamingMessage(RequestPayload) returns (stream ResponsePayload); // server streming for every client request, half duplex.
 }
 
 message RequestPayload{
