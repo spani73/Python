@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package unari;
+
+service Unari{
+	rpc getServerMessage(RequestPayload) returns (ResponsePayload);
+}
+
+message RequestPayload{
+	string message = 1;
+}
+
+message ResponsePayload{
+	string message = 1;
+}
